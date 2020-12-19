@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %} {% block title %}Edit Groupe{% endblock %} {%
+block body %}
+
+<section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="banner_content text-center">
+            <h2 class="text-warning">Groupe</h2>
+            <div class="page_link">
+              <a href="index.html" class="text-warning">Home</a>
+              <a href="courses.html" class="text-warning">Groupe Update</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section
+  class="hero-wrap hero-wrap-2"
+  style="background-image: url('template/fox-master/images/bg_1.jpg')"
+>
+  <div class="container">
+    <div
+      class="row no-gutters slider-text align-items-center justify-content-center"
+    >
+      <div class="col-md-9 ftco-animate text-center">
+        <h1>Update Groupe</h1>
+        {{ include("groupe/_form.html.twig") }}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

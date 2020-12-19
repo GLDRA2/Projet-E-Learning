@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %} {% block title %}Edit Groupe{% endblock %} {%
+block body %}
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="banner_content text-center">
+            <h2 class="text-warning">JOIN</h2>
+            <div class="page_link">
+              <a href="index.html" class="text-warning">COUR</a>
+              <a href="courses.html" class="text-warning">JOIN</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--=================================-->
+
+<div class="">
+  <br />
+  <h2 class="mb-3" align="center">JOIN</h2>
+
+  <div class="container">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <td colspan="2" align="center">
+            {% if groupe.cours.image is not null and groupe.cours.image|trim is
+            not empty %}
+            <img
+              src="{{ asset('uploads/') }}{{ groupe.cours.image }}"
+              height="300"
+              width="400"
+              style="border-radius: 15px; float: center; margin: 0 10px 0 20px"
+            />
+
+            {% else %}
+
+            <img
+              src="//placeimg.com/280/180/tech"
+              height="300"
+              width="400"
+              style="border-radius: 15px; float: center; margin: 0 10px 0 20px"
+            />
+
+            {% endif %}
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2" align="center">PASSWORD</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            {{ form_start(form) }}
+            {{ form_widget(form) }} {#
+            <input
+              type="confirm"
+              name="confirm"
+              id="confirm"
+              placeholder="Password"
+              class="form-control"
+              required
+            />
+            #}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button class="btn btn-warning btn-block">
+              {{ button_label|default('CONFIRM') }}
+            </button>
+            {{ form_end(form) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

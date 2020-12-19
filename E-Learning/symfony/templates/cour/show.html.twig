@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %} {% block title %}Cour{% endblock %} {% block body
+%} {% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/cour_profil.css') }}" />
+{% endblock %}
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="banner_content text-center">
+            <h2 class="text-warning">Details</h2>
+            <div class="page_link">
+              <a href="index.html" class="text-warning">Cour</a>
+              <a href="courses.html" class="text-warning">Show</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <div class="center">
+        <br />
+        <h2 class="mb-3" align="center">Cour name: {{ cour.name }}</h2>
+        <div class="container">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <td colspan="2" align="center">
+                  {% if cour.image is not null and cour.image|trim is not empty %}
+                       <img
+                    src="{{ asset('uploads/') }}{{ cour.image }}"
+                    height="300"
+                    width="400"
+                    style="
+                      border-radius: 15px;
+                      float: center;
+                      margin: 0 10px 0 20px;
+                    "
+                  />
+               
+                  {% else %}
+                    
+                  <img
+                    src="//placeimg.com/280/180/tech"
+                    height="300"
+                    width="400"
+                    style="
+                      border-radius: 15px;
+                      float: center;
+                      margin: 0 10px 0 20px;
+                    "
+                  />
+                     
+                  {% endif %}
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color: Navy">Name :</td>
+                <td>{{ cour.name }}</td>
+              </tr>
+              <tr>
+                <td style="color: Navy">Description :</td>
+                <td>{{ cour.description }}</td>
+              </tr>
+              <tr>
+                <td style="color: Navy">Section :</td>
+                <td>{{ cour.section }}</td>
+              </tr>
+              <tr>
+                <td style="color: Navy">Category :</td>
+                <td>{{ cour.category.name }}</td>
+              </tr>
+              <tr>
+                <td style="color: Navy">Groupe Name :</td>
+                <td>{{ cour.groupe.name }}</td>
+              </tr>
+
+              <tr>
+                <td colspan="2" align="center">
+                  <a
+                    href="{{ path('groupe_edit', { id: cour.groupe.id }) }}"
+                    class="btn btn-warning btn-block"
+                    >JOIN COURS</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--=================================-->
+
+{# <a href="{{ path('cour_index') }}">back to list</a>
+
+<a href="{{ path('cour_edit', { id: cour.id }) }}">edit</a>
+
+{{ include("cour/_delete_form.html.twig") }} #} {% endblock %}

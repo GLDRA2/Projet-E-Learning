@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %} {% block title %}New Cour{% endblock %} {% block
+body %}
+
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="banner_content text-center">
+            <h2 class="text-warning">Create</h2>
+            <div class="page_link">
+              <a href="index.html" class="text-warning">Home</a>
+              <a href="courses.html" class="text-warning">Create cours</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--================End Home Banner Area =================-->
+<div class="center">
+  <br />
+  <h2 class="mb-3" align="center">Create Cours</h2>
+  <div class="container">
+    {{ include("cour/_form.html.twig") }}
+    <br />
+    <br />
+    <!-- content -->
+  </div>
+</div>
+
+{% endblock %}

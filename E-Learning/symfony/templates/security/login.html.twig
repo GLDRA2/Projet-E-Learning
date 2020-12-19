@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %} {% block title %}Log in!{% endblock %} {% block
+body %}
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="banner_content text-center">
+            <h2 class="text-warning">LOGIN</h2>
+            <div class="page_link">
+              <a href="index.html" class="text-warning">Home</a>
+              <a href="courses.html" class="text-warning">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--================End Home Banner Area =================-->
+<section
+  class="hero-wrap hero-wrap-2"
+  style="background-image: url('template/fox-master/images/bg_1.jpg')"
+>
+  <div class="container">
+    <div
+      class="row no-gutters slider-text align-items-center justify-content-center"
+    >
+      <div class="col-md-9 ftco-animate text-center">
+        <form method="post">
+          {% if error %}
+          <div class="alert alert-danger">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+          </div>
+          {% endif %} {% if app.user %}
+          <div class="mb-3">
+            You are logged in as {{ app.user.username }},
+            <a href="{{ path('app_logout') }}">Logout</a>
+          </div>
+          {% else %}
+
+          <h5><label for="inputEmail" class="mb-2 bread">Email</label></h5>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fa fa-user fa-lg"></i>
+              </div>
+            </div>
+            <input
+              type="email"
+              value="{{ last_username }}"
+              placeholder="Exemple@gmail.com"
+              name="email"
+              id="inputEmail"
+              class="form-control"
+              required
+              autofocus
+            />
+          </div>
+          <br />
+
+          <h5>
+            <label for="inputPassword" class="mb-2 bread">Password</label>
+          </h5>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-key"></i></div>
+            </div>
+            <input
+              type="password"
+              name="password"
+              id="inputPassword"
+              placeholder="Password"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <input
+            type="hidden"
+            name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+          />
+
+          {# Uncomment this section and add a remember_me option below your
+          firewall to activate remember me functionality. See
+          https://symfony.com/doc/current/security/remember_me.html #}
+          <div class="container">
+            <div class="checkbox mb-3" align="left">
+              <label class="mb-2 mt-2 bread">
+                <input type="checkbox" name="_remember_me" /> Remember me
+              </label>
+            </div>
+            <button class="btn btn-warning btn-lg btn-block" type="submit">
+              Sign in
+            </button>
+            <a href="{{ path('security_registration') }}">Dont Have acount !</a>
+          </div>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

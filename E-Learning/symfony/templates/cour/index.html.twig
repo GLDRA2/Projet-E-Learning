@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %} {% block title %}Cour index {% endblock %} {%
+block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/cour_profil.css') }}" />
+{% endblock %} {% block body %}
+
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+  <div class="banner_inner d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="banner_content text-center">
+            <h2 class="text-warning">Cours</h2>
+            <div class="page_link">
+              <a href="index.html" class="text-warning">Home</a>
+              <a href="courses.html" class="text-warning">Cours</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--================End Home Banner Area =================-->
+
+<div class="center">
+  <br />
+  <h2 class="mb-3" align="center">Our Popular Courses</h2>
+  <div class="container">
+    <div class="row">
+      {% for cour in cours %}
+      <div class="col-md-5 col-sm-5 m-4">
+        <div class="card bg-light">
+          {% if cour.image is not null and cour.image|trim is not empty %}
+          <img
+            src="{{ asset('uploads/') }}{{ cour.image }}"
+            height="300"
+            width="400"
+            style="border-radius: 15px; float: center; margin: 0 10px 0 20px"
+          />
+
+          {% else %}
+
+          <img
+            src="//placeimg.com/280/180/tech"
+            height="300"
+            width="400"
+            style="border-radius: 15px; float: center; margin: 10px 10px 0 20px"
+          />
+
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title border-bottom pb-3">
+              {{ cour.name }}
+              <!-- <a
+                href="#"
+                class="float-right btn btn-sm btn-info d-inline-flex share"
+                ><i class="fas fa-share-alt"></i
+              ></a> -->
+            </h5>
+            <p class="card-text">{{ cour.description }}</p>
+            <a
+              href="{{ path('cour_show', { id: cour.id }) }}"
+              class="btn btn-sm btn-warning float-right"
+              >Read more <i class="fas fa-angle-double-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      {% else %} no records foun {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!--================ End Popular Courses Area =================-->
+
+{% endblock %}
